@@ -13,17 +13,17 @@ public class SecurityConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
-                .withClient("tracker-client")
-                .secret("supersecret")
-                .authorizedGrantTypes("client_credentials")
-                .scopes("openid");
+            .withClient("tracker-client")
+            .secret("supersecret")
+            .authorizedGrantTypes("client_credentials")
+            .scopes("openid");
     }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer)
-            throws Exception {
+        throws Exception {
         oauthServer
-                .tokenKeyAccess("permitAll()")
-                .checkTokenAccess("isAuthenticated()");
+            .tokenKeyAccess("permitAll()")
+            .checkTokenAccess("isAuthenticated()");
     }
 }
